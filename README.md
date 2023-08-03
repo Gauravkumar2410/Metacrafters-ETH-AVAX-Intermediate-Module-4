@@ -1,8 +1,5 @@
 # Degen Gaming Token (ERC20)
 
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) [![Solidity](https://img.shields.io/badge/Solidity-0.8.0-blue.svg)](https://solidity.readthedocs.io/en/v0.8.0/) [![Avalanche](https://img.shields.io/badge/Avalanche-Fuji_Network-red.svg)](https://www.avalabs.org/) [![My Badge](https://img.shields.io/badge/Metacrafters-yellow.svg)](https://www.metacrafters.io/) [![Website Status](https://img.shields.io/website-up-down-green-red/https/bhardwajrizul.github.io/DegenToken-Metacrafters.svg)](https://bhardwajrizul.github.io/DegenToken-Metacrafters/)
-
-
 > 🎮 A unique token for Degen Gaming Studio to reward players and enhance their gaming experience using the Avalanche blockchain. 
 >**🛒** Players can redeem tokens for various items, transfer tokens, and burn tokens through the Degen Mart website. 
 
@@ -13,9 +10,6 @@
 
 ## Description 📑
 The Degen Gaming Token (DGN) is a custom ERC20 token designed for Degen Gaming Studio. It enables players to earn rewards while playing the game and transfer or redeem these tokens for various items on the dengen mart webiste.
-
-## Application Preview 📸
-[![main.png](https://i.postimg.cc/g209w9Ph/main.png)](https://postimg.cc/TpBNS412)
 
 ## Website Details 🛍️
 The Degen Gaming website allows you to redeem tokens for special items, transfer DGN tokens to other accounts, and burn tokens for removal. It provides a seamless experience for managing and utilizing your DGN tokens within the game ecosystem.
@@ -56,17 +50,6 @@ To see how the Degen Mart Webiste and DegenToken contract were developed using t
 7. Start the webiste using `npm run dev`
 8. Interact with the deployed contract by using the webiste that utilizes Ethers.js.
 
-
-> For detailed installation guide check out this repository:
-https://github.com/bhardwajrizul/Avalanche-hardhat-starter
-
-## Contributing
-
-Contributions are welcome! If you have any suggestions, improvements, or bug fixes, please submit a pull request. For major changes, please open an issue first to discuss the proposed changes.
-
-## Acknowledgements 🤝
-
-This project was developed with the guidance and support of [Metacrafters](https://www.metacrafters.io/) as part of their comprehensive web3 avax course.
 
 ## License
 
