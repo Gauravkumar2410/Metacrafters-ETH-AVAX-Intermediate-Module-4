@@ -3,8 +3,7 @@
  Players can redeem tokens for various items, transfer tokens, and burn tokens through the Degen Mart website. 
 
 ##### IMPORTANT: Make sure you have metamask installed and are on [avalanche fuji chain](https://chainlist.org/chain/43113?testnets=true) before using the webiste. You also need some test-AVAX in your account for gas fees.
-# video explanation
-https://www.loom.com/share/f502f61fddaa48e89dbc39853695731b?sid=c6791ccd-4c77-4265-ab39-0a5b90d56037
+
 
 ## Description 
 The Degen Gaming Token (DGN) is a custom ERC20 token designed for Degen Gaming Studio. It enables players to earn rewards while playing the game and transfer or redeem these tokens for various items on the dengen mart webiste.
