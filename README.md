@@ -1,27 +1,24 @@
 # Degen Gaming Token (ERC20)
+  A unique token for Degen Gaming Studio to reward players and enhance their gaming experience using the Avalanche blockchain. 
+ Players can redeem tokens for various items, transfer tokens, and burn tokens through the Degen Mart website. 
 
-> 🎮 A unique token for Degen Gaming Studio to reward players and enhance their gaming experience using the Avalanche blockchain. 
->**🛒** Players can redeem tokens for various items, transfer tokens, and burn tokens through the Degen Mart website. 
-
----
 ##### IMPORTANT: Make sure you have metamask installed and are on [avalanche fuji chain](https://chainlist.org/chain/43113?testnets=true) before using the webiste. You also need some test-AVAX in your account for gas fees.
----
 
 
-## Description 📑
+## Description 
 The Degen Gaming Token (DGN) is a custom ERC20 token designed for Degen Gaming Studio. It enables players to earn rewards while playing the game and transfer or redeem these tokens for various items on the dengen mart webiste.
 
-## Website Details 🛍️
+## Website Details 
 The Degen Gaming website allows you to redeem tokens for special items, transfer DGN tokens to other accounts, and burn tokens for removal. It provides a seamless experience for managing and utilizing your DGN tokens within the game ecosystem.
 
-## Contract Details 📃
+## Contract Details 
 
 The DegenToken contract is implemented in Solidity version 0.8. It inherits from the `IERC20` interface, providing standard ERC20 functionality. The contract has the following features:
 
 - Token name: _DegenToken_
 - Token symbol: _DGN_
 
-### Token Functionality 🪙
+### Token Functionality 
 
 1. `totalSupply()`: Returns the total supply of DegenTokens.
 2. `balanceOf(address account)`: Returns the token balance of the specified account.
@@ -35,7 +32,7 @@ The DegenToken contract is implemented in Solidity version 0.8. It inherits from
 10. `transferFrom(address from, address to, uint256 value)`: Transfers tokens from one address to another on behalf of a specified address.
 
 
-## Local Installation 🧑‍💻
+## Local Installation 
 
 To see how the Degen Mart Webiste and DegenToken contract were developed using the Avalanche network, you can follow these steps:
 
