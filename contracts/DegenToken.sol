@@ -1,58 +1,56 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8;
+pragma solidity ^0.8.0;
 
-contract DegenToken {
-    string public name = "Degen"; // Token name
-    string public symbol = "DGN"; // Token symbol
-    uint8 public decimals = 18; // Token decimals, similar to most ERC-20 tokens
-    uint256 public totalSupply; // Total supply of tokens
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 
-    mapping(address => uint256) public balanceOf; // Mapping to store the balance of each address
-    mapping(address => mapping(address => uint256)) public allowance; // Mapping to store the approved allowance for each address
+contract DegenToken is ERC20, Ownable, ERC20Burnable {
+    // Create a mapping to store the redemption values for each choice
+    mapping(uint256 => uint256) private redemptionValues;
 
-    event Transfer(address indexed from, address indexed to, uint256 value); // Event emitted on token transfer
-    event Approval(address indexed owner, address indexed spender, uint256 value); // Event emitted on approval of spending
-
-    constructor(uint256 initialSupply) {
-        totalSupply = initialSupply * 10**uint256(decimals); // Set the total supply of tokens
-        balanceOf[msg.sender] = totalSupply; // Assign the total supply to the contract creator's balance
+    constructor() ERC20("DegenToken", "DTK") {
+        // Initialize the redemption values for each choice
+        redemptionValues[1] = 100; // Legendary Sword NFT value = 100
+        redemptionValues[2] = 50;  // Dragon Shield value = 50
+        redemptionValues[3] = 25;  // Magic Potion value = 25
     }
 
-    function transfer(address to, uint256 value) external returns (bool) {
-        require(to != address(0), "Invalid address"); // Check if the destination address is valid
-        require(value <= balanceOf[msg.sender], "Insufficient balance"); // Check if the sender has enough balance
-
-        balanceOf[msg.sender] -= value; // Deduct the amount from the sender's balance
-        balanceOf[to] += value; // Add the amount to the receiver's balance
-
-        emit Transfer(msg.sender, to, value); // Emit a transfer event
-        return true;
+    function mint(address to, uint256 amount) public onlyOwner {
+        _mint(to, amount);
     }
 
-    function approve(address spender, uint256 value) external returns (bool) {
-        allowance[msg.sender][spender] = value; // Approve the spender to spend the specified amount
-
-        emit Approval(msg.sender, spender, value); // Emit an approval event
-        return true;
+    function burnTokens(uint256 amount) external {
+        require(balanceOf(msg.sender) >= amount, "Insufficient balance");
+        _burn(msg.sender, amount);
     }
 
-    function transferFrom(address from, address to, uint256 value) external returns (bool) {
-        require(from != address(0), "Invalid address"); // Check if the source address is valid
-        require(to != address(0), "Invalid address"); // Check if the destination address is valid
-        require(value <= balanceOf[from], "Insufficient balance"); // Check if the source has enough balance
-        require(value <= allowance[from][msg.sender], "Allowance exceeded"); // Check if the spender is allowed to spend the specified amount
-
-        balanceOf[from] -= value; // Deduct the amount from the source's balance
-        balanceOf[to] += value; // Add the amount to the receiver's balance
-        allowance[from][msg.sender] -= value; // Reduce the spender's allowance by the spent amount
-
-        emit Transfer(from, to, value); // Emit a transfer event
-        return true;
+    function checkBalance() external view returns (uint) {
+        return balanceOf(msg.sender);
     }
-}
 
-    error InsufficientBalance(address from,uint256 fromBalance,uint256 value);
+    function transferTokensTo(address _receiver, uint256 amount) external {
+        require(balanceOf(msg.sender) >= amount, "Insufficient balance");
+        _transfer(msg.sender, _receiver, amount);
+    }
 
-    error InsufficientAllowance(address spender, address from, uint256 currentAllowance, uint256 value);
+    function gameStore() public pure returns (string[] memory) {
+        string[] memory items = new string[](3);
+        items[0] = "1. The titan value = 100";
+        items[1] = "2. Heroshima value = 50";
+        items[2] = "3. Magic Potion value = 25";
+        return items;
+    }
 
+    function redeemTokens(uint256 choice) external payable {
+        require(choice >= 1 && choice <= 3, "Invalid selection");
+
+        uint256 amountToRedeem = redemptionValues[choice];
+        require(amountToRedeem > 0, "Invalid choice");
+
+        require(balanceOf(msg.sender) >= amountToRedeem, "Insufficient balance");
+
+        // Transfer tokens from the sender to the contract owner
+        _transfer(msg.sender, owner(), amountToRedeem);
+    }
 }
